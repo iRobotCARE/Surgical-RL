@@ -1,0 +1,49 @@
+agent:
+  name: DDPGBC
+  device: ${device}
+  discount: 0.99
+  reward_scale: 1
+  n_seed_steps: 1000
+  actor_lr: 0.001
+  critic_lr: 0.001
+  noise_eps: 0.1
+  aux_weight: 5
+  p_dist: 2
+  soft_target_tau: 0.005
+  clip_obs: 200
+  norm_clip: 5
+  norm_eps: 0.01
+  hidden_dim: 256
+  sampler:
+    type: her
+    strategy: future
+    k: 4
+  update_epoch: 40
+cwd: ${hydra:runtime.output_dir}
+n_train_steps: 10000001
+eval_interval: 50
+save_interval: 100
+log_interval: 25
+n_seed_steps: 4000000
+replay_buffer_capacity: 100000
+batch_size: 128
+device: cpu
+seed: 1
+task: NeedlePickRL-v0
+postfix: null
+dont_save: false
+n_eval_episodes: 20
+clean_model_dir: true
+resume: false
+ckpt_episode: latest
+num_demo: 200
+use_demo: false
+demo_path: null
+use_wb: true
+project_name: my-surrol
+entity_name: d202080216-huazhong-university-of-science-and-technology
+n_logged_samples: 2
+mpi:
+  rank: null
+  is_chef: null
+  num_workers: null
